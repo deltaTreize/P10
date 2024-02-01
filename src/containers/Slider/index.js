@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useData } from "../../contexts/DataContext";
 import { getMonth } from "../../helpers/Date";
+import { useData } from "../../contexts/DataContext";
+
 
 import "./style.scss";
-
 const Slider = () => {
 	const { data } = useData();
 	const [index, setIndex] = useState(0);
