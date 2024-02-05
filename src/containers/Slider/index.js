@@ -9,13 +9,15 @@ const Slider = () => {
 	const [index, setIndex] = useState(0);
 	// filtre du tableau par date du plus ancien au plus recent 
 	const byDateDesc = data?.focus.sort((evtA, evtB) =>
-		new Date(evtA.date) > new Date(evtB.date) ? new Date(evtA.date) : new Date(evtB.date)
+	new Date(evtA.date) > new Date(evtB.date) ? 1 :-1
 	);
 	const nextCard = () => {
-		setTimeout(
-			() => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
-			5000
-		);
+		if (data) {
+			setTimeout(
+				() => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
+				5000
+			);
+		}
 	};
 	useEffect(() => {
 		nextCard();
@@ -48,6 +50,7 @@ const Slider = () => {
 							type="radio"
 							name="radio-button"
 							checked= {idx === index}
+							onChange={() => setIndex(idx)}
 						/>
 					))}
 				</div>

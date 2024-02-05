@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
 import Home from "./index";
 
 describe("When Form is created", () => {
@@ -13,19 +14,22 @@ describe("When Form is created", () => {
   describe("and a click is triggered on the submit button", () => {
     it("the success message is displayed", async () => {
       render(<Home />);
-      fireEvent(
-        await screen.findByText("Envoyer"),
-        new MouseEvent("click", {
-          cancelable: true,
-          bubbles: true,
-        })
-      );
-      await screen.findByText("En cours");
-      await screen.findByText("Message envoyé !");
-    });
-  });
+      act(async ()=>{
 
-});
+        fireEvent(
+          await screen.findByText("Envoyer"),
+          new MouseEvent("click", {
+            cancelable: true,
+            bubbles: true,
+          })
+          );
+          await screen.findByText("En cours");
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+          await screen.findByText("Message envoyé !");
+        });
+      });
+    });
+  })
 
 
 describe("When a page is created", () => {
