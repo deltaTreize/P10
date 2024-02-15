@@ -55,7 +55,7 @@ const Form = ({ onSuccess, onError }) => {
 						label="Message"
 						type={FIELD_TYPES.TEXTAREA}
 					/>
-          {success && <p>Message envoyé !</p>}
+          {success && <p className="success_message">Message envoyé !</p>}
 				</div>
 			</div>
 		</form>

@@ -9,4 +9,13 @@
   font-size: 25px;
   height: 100px;
   margin: 10px;
+  animation: succes 3s linear forwards;
+}
+@keyframes succes {
+  0%{
+    display: flex;
+  }  
+  100%{
+    display: none;
+  }
 }
