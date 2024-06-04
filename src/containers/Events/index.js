@@ -66,6 +66,7 @@ const changeType = (evtType) => {
 								key={n}
 								href="#events"
 								onClick={() => setCurrentPage(n + 1)}
+								className={currentPage === n + 1 ? "Pagination-active" : ""}
 							>
 								{n + 1}
 							</a>
