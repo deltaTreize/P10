@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Field, { FIELD_TYPES } from "../../components/Field";
 import Select from "../../components/Select";
@@ -31,6 +31,15 @@ const Form = ({ onSuccess, onError }) => {
 		},
 		[onSuccess, onError]
 	);
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setSuccess(false);
+		}, 3000);
+
+		return () => clearTimeout(timer);
+	});
+
 	return (
 		<form onSubmit={sendContact}>
 			<div className="row">
@@ -55,7 +64,7 @@ const Form = ({ onSuccess, onError }) => {
 						label="Message"
 						type={FIELD_TYPES.TEXTAREA}
 					/>
-          {success && <p className="success_message">Message envoyé !</p>}
+					{success && <p className="success_message">Message envoyé !</p>}
 				</div>
 			</div>
 		</form>
